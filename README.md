@@ -24,3 +24,20 @@ df.iloc[행, 열] 순으로 인덱스 번호를 지정합니다.
 # 레티나 디스플레이로 폰트가 선명하게 표시되도록 합니다.
 from IPython.display import set_matplotlib_formats
 set_matplotlib_formats('retina')
+ 
+# 시각화를 위한 한글 폰트 설정 & 마이너스 폰트설정
+plt.rc('font', family='Malgun Gothic')
+plt.rc('axes',unicode_minus =False)
+
+# 폰트가 선명하게 보이도록 설정
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('retina')
+
+# 파일 불러올때 csv 쉼표가 아니라 '|'로 구분될때
+sep='|'
+
+# isnull() 을 사용하면 데이터의 결측치를 볼 수 있습니다.
+# 결측치는 True로 값이 있다면 False로 표시되는데 True 는 1과 같기 때문에 
+# True 값을 sum()을 사용해서 더하게 되면 합계를 볼 수 있습니다.
+# mean()을 사용하면 결측치의 비율을 볼 수 있습니다.
+#f: 포멧스트링
