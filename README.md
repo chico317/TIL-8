@@ -33,6 +33,10 @@ plt.rc('axes',unicode_minus =False)
 from IPython.display import set_matplotlib_formats
 set_matplotlib_formats('retina')
 
+# 그래프가 선명하게 표시되도록 합니다.
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('retina')
+
 # 파일 불러올때 csv 쉼표가 아니라 '|'로 구분될때
 sep='|'
 
@@ -40,4 +44,35 @@ sep='|'
 # 결측치는 True로 값이 있다면 False로 표시되는데 True 는 1과 같기 때문에 
 # True 값을 sum()을 사용해서 더하게 되면 합계를 볼 수 있습니다.
 # mean()을 사용하면 결측치의 비율을 볼 수 있습니다.
-#f: 포멧스트링
+# f: 포멧스트링
+
+# seaborn 의 set 기능을 통해 폰트, 마이너스 폰트 설정, 스타일 설정을 합니다.
+sns.set(font = 'Malgun Gothic',rc={'axes.unicode_minus':False}, style = 'darkgrid')
+
+# 그래프가 선명하게 표시되도록 합니다.
+from IPython.display import set_matplotlib_formats
+set_matplotlib_formats('retina')
+
+# pandas_profiling 의 ProfileReport 를 불러와 표현합니다.
+# 별도의 html 파일로 생성해서 그려보세요.
+예시)from pandas_profiling import ProfileReport
+%time profile=ProfileReport(df, title ='도시공원 표준 데이터')
+profile.to_file(output_file='05-park_pandas_profile.html')
+
+# 위에서 이미 폰트를 설정했더라도 pandas profiling 내부에서 폰트가 깨지는 걸 방지하기 위해 재설정이 필요합니다.
+import matplotlib 
+matplotlib.font_manager._rebuild()
+
+# 공식문서의 튜토리얼을 보고 wordcloud를 그리는 함수를 만들어 봅니다.
+# 이때 폰트 설정시 폰트명이 아닌 폰트의 설치 경로를 입력해 주셔야 합니다.
+# 윈도우 : r"C:\Windows\Fonts\malgun.ttf" 해당 경로에 폰트가 있는지 확인을 해주세요.
+# 맥 : r"/Library/Fonts/AppleGothic.ttf"
+# 나눔고딕 등의 폰트를 설치했다면 : '/Library/Fonts/NanumBarunGothic.ttf'
+예시)
+from wordcloud import WordCloud
+word_draw = WordCloud(font_path= r"C:\Windows\Fonts\malgun.ttf")
+word_draw.generate(gym)
+
+plt.imshow(word_draw)
+plt.axis('off')
+plt.show
